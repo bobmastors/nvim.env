@@ -23,6 +23,17 @@ vim.g.maplocalleader = "\\"
 
 require("config.options")
 
+-- Define colors for org mode
+vim.api.nvim_create_autocmd("ColorScheme", {
+    pattern = "*",
+    callback = function()
+        vim.api.nvim_set_hl(0, "@org.headline.level1", { fg = "#FF6B6B" })
+        vim.api.nvim_set_hl(0, "@org.headline.level2", { fg = "#F6CE4E" })
+        vim.api.nvim_set_hl(0, "@org.headline.level3", { fg = "#5B82C7" })
+        vim.api.nvim_set_hl(0, "@org.headline.level4", { fg = "#A998F0" })
+    end,
+})
+
 -- Setup lazy.nvim
 require("lazy").setup({
     spec = {
